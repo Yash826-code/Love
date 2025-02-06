@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Surprise 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        
+        .message-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+            color: #d63384;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.8);
+            transition: all 0.8s ease-in-out;
+            max-width: 100%;
+            margin-bottom: 20px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message-box.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: bounceIn 1s ease-in-out;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #ff4081, #ff6699);
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0px 8px 20px rgba(255, 64, 129, 0.6);
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 10px 25px rgba(255, 20, 147, 0.9);
+        }
+        
+        .final-message {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffeb3b;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 1s ease-in-out;
+            margin-top: 20px;
+        }
+        
+        .final-message.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        let messageIndex = 0;
+        const messages = [
+            "You light up my world like no one else! 💖",
+            "Every moment with you is special! ✨",
+            "You are my happiest thought of the day! 😊",
+            "If I had a flower for every time I thought of you, I’d have a garden! 🌸",
+            "You are my sunshine on a rainy day! ☀️",
+            "You make my heart smile! ❤️",
+            "I am so lucky to have you in my life! 🍀",
+            "You’re like a melody I never want to stop playing! 🎶",
+            "You are my favorite chapter in this story called life! 📖",
+            "With you, every moment is magical! ✨"
+        ];
+        
+        function showMessage() {
+            const messageBox = document.querySelector('.message-box');
+            const finalMessage = document.querySelector('.final-message');
+            const button = document.querySelector('.button');
+            
+            if (messageIndex < messages.length) {
+                messageBox.innerHTML = messages[messageIndex];
+                messageBox.classList.add('show');
+                messageBox.style.animation = 'pulse 1s infinite';
+                messageIndex++;
+            } else {
+                messageBox.style.display = 'none';
+                finalMessage.classList.add('show');
+                finalMessage.innerHTML = "You're truly special! 💖✨";
+                button.style.display = 'none';
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('.message-box').classList.add('show');
+        });
+    </script>
+</head>
+<body>
+    <div class="watermark">Made by Ritesh</div>
+    <div class="container">
+        <div class="message-box">Click the button to see a surprise!</div>
+        <button class="button" onclick="showMessage()">Click Me</button>
+        <div class="final-message"></div>
+    </div>
+</body>
+</html>
